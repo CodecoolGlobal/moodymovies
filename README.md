@@ -1,6 +1,8 @@
 # moodymovies
-## Introduction to micro services
+## Introduction to microservices
 4th TW week's project
+
+![Moody Movies](moodymovies.png)
 
 ### Technologies
 * git

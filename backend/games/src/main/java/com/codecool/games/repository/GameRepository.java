@@ -12,9 +12,7 @@ public interface GameRepository extends JpaRepository<ScreenFun, Long> {
 
     ScreenFun getScreenFunsById(long id);
 
-    List<ScreenFun> getScreenFunsByRatingLessThanEqualAndGenre(double rating, Genre genre);
-
-    List<ScreenFun> getScreenFunsByRatingGreaterThanAndGenre(double rating, Genre genre);
+    List<ScreenFun> getAllByRatingIsBetweenAndGenreIn(double from, double to, List<Genre> genres);
 
     List<ScreenFun> getScreenFunsByGenre(Genre genre);
 }

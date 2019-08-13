@@ -33,24 +33,12 @@ public class GameService {
 
     public ScreenFun getFilteredGame(Questionnaire questionnaire) {
         List<Genre> genres = setGenre(questionnaire);
-        List<ScreenFun> results = new ArrayList<>();
 
         int age = questionnaire.getAge();
-        double rating = 50;
 
-        if (age > 8) {
-            if (questionnaire.getMasochist() == 1) {
-                for (Genre genre : genres) {
-                    results.addAll(gameRepository.getScreenFunsByRatingLessThanEqualAndGenre(rating, genre));
-                }
-            } else {
-                for (Genre genre : genres) {
-                    results.addAll(gameRepository.getScreenFunsByRatingGreaterThanAndGenre(rating, genre));
-                }
-            }
-        } else {
-            results.addAll(gameRepository.getScreenFunsByGenre(Genre.ANIMATED));
-        }
+        double from = questionnaire.getMasochist() == 1 ? 0 : 50;
+        double to = questionnaire.getMasochist() == 1 ? 51 : 101;
+        List<ScreenFun> results = gameRepository.getAllByRatingIsBetweenAndGenreIn(from, to, genres);
 
         return results.get(random.nextInt(results.size()));
     }

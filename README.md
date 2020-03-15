@@ -11,6 +11,8 @@
   * Spring Boot
   * REST API template
   * H2 database
+  * JPA
+  * Hibernate
   * Eureka
   * Swagger2
   * Zuul
